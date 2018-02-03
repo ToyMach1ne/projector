@@ -31,8 +31,21 @@ $(document).ready(function(){
   });
 });
 
-//Author modals
+//OWL dots
+$(document).ready(function(){
+  $('.owl-prev').addClass('disabled');
+});
 
+$(".owl-carousel").on('initialized.owl.carousel changed.owl.carousel refreshed.owl.carousel', function (event) {
+    if (!event.namespace) return;
+    var carousel = event.relatedTarget,
+        element = event.target,
+        current = carousel.current();
+    $('.owl-next', element).toggleClass('disabled', current === carousel.maximum());
+    $('.owl-prev', element).toggleClass('disabled', current === carousel.minimum());
+})
+
+//Author modals
 jQuery(".open__modal--first").click(function() {
   jQuery(".modal__first--author").toggle();
     $('.close__modal--author').on('click', function(event) {
@@ -135,10 +148,52 @@ $(window).scroll(function (event) {
       $('.headnav li:first-child').addClass('active');
       $('.sign__up--block').hide();
     }
-   // $('.to_why').toggleClass('active',
-     //add 'ok' class when div position match or exceeds else remove the 'ok' class.
-     // scroll >= $('.for__whom--block').offset().top
-   // );
+
+    $('.to_projector').toggleClass('active',
+     scroll >= $('.second__why--block').offset().top
+    );
+    $('.to_why').toggleClass('active',
+     scroll >= $('.for__whom--block').offset().top
+    );
+    $('.to_advantages').toggleClass('active',
+     scroll >= $('.rivalry_advantages').offset().top
+    );
+    $('.to_programm').toggleClass('active',
+     scroll >= $('.about_project').offset().top
+    );
+    $('.to_authors').toggleClass('active',
+     scroll >= $('.block_authors').offset().top
+    );
+    $('.to_video').toggleClass('active',
+     scroll >= $('.video_block').offset().top
+    );
+    $('.to_contacts').toggleClass('active',
+     scroll >= $('.form__contacts--block').offset().top
+    );
+
+
+    if ($('.to_why').hasClass('active')) {
+      $('.to_projector').removeClass('active');
+    }
+     if ($('.to_advantages').hasClass('active')) {
+      $('.to_why').removeClass('active');
+    }
+     if ($('.to_programm').hasClass('active')) {
+      $('.to_advantages').removeClass('active');
+    }
+     if ($('.to_authors').hasClass('active')) {
+      $('.to_programm').removeClass('active');
+    }
+     if ($('.to_video').hasClass('active')) {
+      $('.to_authors').removeClass('active');
+    }
+     if ($('.to_contacts').hasClass('active')) {
+      $('.to_video').removeClass('active');
+    }
+    else {
+      //nothing else
+    }
+
 });
 //trigger the scroll
 $(window).scroll();

@@ -2,11 +2,10 @@
 <footer role="contentinfo">
   <div class="container">
     <div class="row">
-
-      <p class="copyright col-md-12">
-        &copy; <?php echo date("Y"); ?> Собственность <?php bloginfo('name'); ?>.
-      </p><!-- /copyright -->
-
+      <div class="copyright col-md-12">
+        <p>© <a href="https://managym.by/" target="_blank">Managym</a>, 2017</p>
+        <p>Разработка сайта <a href="https://saitobaza.ru" target="_blank">Saitobaza</a></p>
+      </div><!-- /copyright -->
     </div><!-- /.row -->
   </div><!-- /.container -->
 </footer><!-- /footer -->
